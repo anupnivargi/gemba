@@ -3,7 +3,9 @@ require File.join(File.dirname(__FILE__), 'lib', 'rubygem_api')
 
 class Server < Sinatra::Base
 
-  set :logging, true
+  configure  :production do 
+    enable :logging
+  end
 
   get "/" do
     @hooks = RubygemApi.web_hooks
@@ -20,8 +22,8 @@ class Server < Sinatra::Base
   end
 
   get "/callback" do
-    puts ">>>>>>>>>>>>>>>>>>>>>>>>"
-    puts params
+    logger.info ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+    logger.info params
     status 200
   end
 
