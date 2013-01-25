@@ -1,0 +1,30 @@
+<form action="/" method="POST" class="form-inline" id="entry-form">
+  <fieldset class="control-group <%#= @entry.errors.full_messages.empty? ? '' : 'error' %>">
+    <div class="input-prepend">
+      <span class="add-on"><i class="icon-tasks"></i></span><input type="text" name="gem_name" placeholder="Gem Name" id="gem_name"/>
+    </div>
+
+    <div class="input-prepend">
+      <span class="add-on"><i class="icon-tasks"></i></span><input type="text" name="callback_url" placeholder="Callback Url" id="callback_url"/>
+    </div>
+    <button type="submit" class="btn btn-primary btn-small">Submit</button>
+  </fieldset>
+</form>
+
+<table cellpadding="20" cellspacing="10" class="table table-striped">
+  <tr>
+    <th>Gem</th>
+    <th>Callback Url</th>
+    <th>Failure Count</th>
+  </tr>
+
+  <% @hooks.each do |gem, info| %>
+    <tr>
+      <td><%= gem %></td>
+      <% info.each do |i|%>
+        <td><%= i["url"] %></td>
+        <td><%= i["failure_count"] %></td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
