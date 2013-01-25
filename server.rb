@@ -24,7 +24,7 @@ class Server < Sinatra::Base
   get "/callback" do
     logger.info ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
     logger.info params
-    status 200
+    params.to_s
   end
 
 
