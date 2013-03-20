@@ -21,9 +21,10 @@ class Server < Sinatra::Base
     redirect "/"
   end
 
-  get "/callback" do
+  post "/callback" do
     logger.info ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
     logger.info params
+    logger.info ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
     params.to_s
   end
 
