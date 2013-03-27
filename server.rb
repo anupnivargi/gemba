@@ -24,9 +24,9 @@ class Server < Sinatra::Base
   post "/callback" do
     logger.info ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
     logger.info params
-    logger.info request.body
+    logger.info request.body.read
     logger.info request.query_string
-    logger.info request.env
+    # logger.info request.env
     logger.info ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
     status 200
   end
@@ -34,7 +34,7 @@ class Server < Sinatra::Base
   get "/callback" do
     p ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
     p params
-    p request.body
+    p request.body.read
     p request.query_string
     p request.env
     p ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
