@@ -24,8 +24,20 @@ class Server < Sinatra::Base
   post "/callback" do
     logger.info ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
     logger.info params
-    logger.info request.inspect
+    logger.info request.body
+    logger.info request.query_string
+    logger.info request.env
     logger.info ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+    status 200
+  end
+
+  get "/callback" do
+    p ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+    p params
+    p request.body
+    p request.query_string
+    p request.env
+    p ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
     status 200
   end
 
