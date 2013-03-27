@@ -1,1 +1,6 @@
-log
+log/*
+config/rubygem.yml
+config/database.yml
+tmp/*
+.rspec
+.rvmrc

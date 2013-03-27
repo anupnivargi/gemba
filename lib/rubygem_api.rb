@@ -1,13 +1,13 @@
 require "rest_client"
 require "json"
+require 'yaml'
 class RubygemApi
 
-  API_KEY = "3847514a6e50ae989c5a933f49b0aa49"
+  $config = YAML.load_file("config/rubygem.yml")[ENV['RACK_ENV']]
 
-  BASE_URL = "https://rubygems.org"
+  API_KEY = $config['api_key']
 
-  API_URL = "#{BASE_URL}/api/v1"
-
+  API_URL = $config['api_url']
   class << self
 
     def find(gem, params={})
@@ -23,7 +23,7 @@ class RubygemApi
     end
 
     def remove_web_hook(gem, callback_url)
-      delete "#{API}/web_hooks/remove", {:gem_name => gem, :url => callback_url}, :authorization => API_KEY
+      delete "#{API_URL}/web_hooks/remove", {:gem_name => gem, :url => callback_url}, :authorization => API_KEY
     end
 
     def get(url, params={})
